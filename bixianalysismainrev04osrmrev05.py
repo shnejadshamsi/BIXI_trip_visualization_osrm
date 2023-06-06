@@ -12,13 +12,6 @@ from PIL import Image
 
 
 
-
-
-
-
-
-
-
 df = pd.read_csv('C:/Users/test/Desktop/Milad_project/BIXI/Data/2019/OD_2019-07.csv')
 st = pd.read_csv('C:/Users/test/Desktop/Milad_project/BIXI/Data/2019/Stations_2019.csv')
 
@@ -42,8 +35,6 @@ data.to_csv('C:/Users/test/Desktop/Milad_project/BIXI/Data/2019/data.csv', encod
 # data=data.iloc[0:10, :]
 
 # print(data.head())
-
-
 
 
 
@@ -84,10 +75,6 @@ def get_route(c1,c2,s1,s2):
 
 
 
-
-
-
-
 data = data.loc[:,~data.columns.duplicated()]
 comb = data.groupby(['start_station_code',
               'start_station_latitude', 
@@ -101,11 +88,8 @@ print(comb.head())
 
 comb.to_csv('C:/Users/test/Desktop/Milad_project/BIXI/Data/2019/comb.csv', encoding='utf-8', sep=',')
 
-print('-------------------------------------')
 
 routes = comb[(comb.start_station_code != comb.end_station_code)].reset_index(drop=True)
-
-
 print(routes.head())
 routes.to_csv('C:/Users/test/Desktop/Milad_project/BIXI/Data//2019/routes/routes.csv', encoding='utf-8', sep=',')
 
@@ -167,14 +151,6 @@ for i, row in routes.iloc[0:144626].iterrows():
 
 
 
-
-
-
-
-
-
-
-
 def get_json_geometry(row):
     s1 = str(int(row['start_station_code']))
     s2 = str(int(row['end_station_code']))
@@ -191,11 +167,6 @@ def get_json_geometry(row):
 
 
 
-
-
-
-
-
 def get_polyline_length(coord):
     length = 0
     for i in range(len(coord)-1):
@@ -203,15 +174,8 @@ def get_polyline_length(coord):
     return length
 
 
-
-
-
-
 def get_distance(xy1,xy2):
     return math.sqrt((xy2[0]-xy1[0])**2 + (xy2[1]-xy1[1])**2)
-
-
-
 
 
 def get_waypoint(coord,pct):
@@ -268,11 +232,6 @@ def get_waypoint(coord,pct):
 
 
 
-
-
-
-
-
 def get_frame(bike_data, center, timestamp):
 
     m = folium.Map(
@@ -313,10 +272,6 @@ def get_frame(bike_data, center, timestamp):
     # draw.text((50, 125),str(timestamp),(255,255,255),font=font)
     
     return im
-
-
-
-print('-----------------------------------------------------------------------------------------------------')
 
 print(data)
 
