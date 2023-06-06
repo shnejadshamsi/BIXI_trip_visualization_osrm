@@ -18,6 +18,7 @@ from PIL import Image
 
 
 
+
 df = pd.read_csv('C:/Users/test/Desktop/Milad_project/BIXI/Data/2019/OD_2019-07.csv')
 st = pd.read_csv('C:/Users/test/Desktop/Milad_project/BIXI/Data/2019/Stations_2019.csv')
 
